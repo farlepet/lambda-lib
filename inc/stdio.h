@@ -1,9 +1,11 @@
 #ifndef LAMBDA_LIB_STDIO_H
 #define LAMBDA_LIB_STDIO_H
 
+#define EOF -1 //!< End-of-file return value
+
 /**
  * Uses `print` to convert the format string and any number of arguments to
- * a string then prints that string to the screen.
+ * a string then writes to stdin.
  * 
  * @param format format string
  * @param ... argument list
@@ -23,5 +25,20 @@ int printf(const char *, ...);
  * @see print
  */
 int sprintf(char *, const char *, ...);
+
+/**
+ * \brief Write character to stdout
+ * 
+ * @param c Character to write
+ * @return EOF on failure, else c
+ */
+int putchar(int c);
+
+/**
+ * \brief Retrieves a character from stdin
+ * 
+ * @return Character received, else EOF
+ */
+int getchar(void);
 
 #endif
