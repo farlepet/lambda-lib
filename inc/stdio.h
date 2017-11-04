@@ -41,4 +41,13 @@ int putchar(int c);
  */
 int getchar(void);
 
+/**
+ * \brief Reads a string from stdin, up until a newline (non-inclusive)
+ * 
+ * @param[out] str Where to write string
+ * 
+ * @return `str` if successful, NULL if error or EOF reached.
+ */
+char *gets(char *str);
+
 #endif
