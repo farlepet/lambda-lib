@@ -6,7 +6,7 @@ char *gets(char *str) {
     int pos = 0;
 
     while((c = getchar()) != EOF) {
-        if(c == '\n') {
+        if(c == '\n' || c == '\r') {
             str[pos] = 0;
             return str;
         }
