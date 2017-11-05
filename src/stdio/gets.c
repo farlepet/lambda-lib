@@ -14,6 +14,8 @@ char *gets(char *str) {
         str[pos] = (char)c;
         pos++;
     }
+
+    str[pos] = 0;
     
     return NULL;
 }
