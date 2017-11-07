@@ -11,4 +11,13 @@ size_t read(int desc, void *buff, size_t len);
 
 size_t write(int desc, const void *buff, size_t len);
 
+/**
+ * \brief Close an open file descriptor
+ * 
+ * @param fd File descriptor to close
+ * 
+ * @return 0 on success, else -1
+ */
+int close(int fd);
+
 #endif
