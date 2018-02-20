@@ -4,6 +4,7 @@
 start:
 	mov  %esp, %ebp
 	push %ebp
+	mov  %esp, %ebp
 	call main
 
 prog_exit:
