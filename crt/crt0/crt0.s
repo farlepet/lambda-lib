@@ -2,6 +2,8 @@
 
 .global start
 start:
+	mov  %esp, %ebp
+	push %ebp
 	call main
 
 prog_exit:
