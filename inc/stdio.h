@@ -50,4 +50,13 @@ int getchar(void);
  */
 char *gets(char *str);
 
+/**
+ * Writes a string to stdout
+ * 
+ * @param s String to write
+ * 
+ * @return >= 0 on success, else EOF
+ */
+int puts(const char *s);
+
 #endif
