@@ -5,6 +5,15 @@ start:
 	mov  %esp, %ebp
 	push %ebp
 	mov  %esp, %ebp
+
+	; TODO: This can DEFINITELY be done more effeciently
+	mov  12(%ebp), %eax ; envp
+	push %eax
+	mov  8(%ebp), %eax  ; argv
+	push %eax
+	mov  4(%ebp), %eax  ; argc
+	push %eax
+
 	call main
 
 prog_exit:
