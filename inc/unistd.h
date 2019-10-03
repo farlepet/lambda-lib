@@ -20,4 +20,17 @@ size_t write(int desc, const void *buff, size_t len);
  */
 int close(int fd);
 
+
+/**
+ * @brief Replace the current process image with a new one created from the
+ * specified executable
+ * 
+ * @param path Path to executable file
+ * @param argv List of program arguments, the first of which should represent the file being executed
+ * @param envp List of environment variables
+ * 
+ * @return int -1 on error, else no return
+ */
+int execve(const char *path, char *const argv[], char *const envp[]);
+
 #endif

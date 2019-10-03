@@ -29,7 +29,10 @@ enum syscalls {
     SYSCALL_FS_IOCTL   = 18,
 
     SYSCALL_FS_READ_BLK    = 19,
-    SYSCALL_FS_GET_DIRINFO = 20
+    SYSCALL_FS_GET_DIRINFO = 20,
+
+    SYSCALL_FORK   = 21,
+    SYSCALL_EXECVE = 22
 };
 
 
