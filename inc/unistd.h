@@ -2,6 +2,7 @@
 #define LAMBDA_LIB_UNISTD_H
 
 #include <stddef.h>
+#include <sys/types.h>
 
 #define STDIN_FILENO  0
 #define STDOUT_FILENO 1
@@ -32,5 +33,13 @@ int close(int fd);
  * @return int -1 on error, else no return
  */
 int execve(const char *path, char *const argv[], char *const envp[]);
+
+/**
+ * @brief Forks the current running process into two identical processes.
+ * 
+ * @return pid_t -1 on error (this overlaps with the kernel process), 0 for the
+ * for the child process, otherwise the PID of the child process.
+ */
+pid_t fork(void);
 
 #endif
