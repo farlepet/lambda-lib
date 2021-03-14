@@ -33,7 +33,11 @@ enum syscalls {
 
     SYSCALL_FORK   = 21,
     SYSCALL_EXECVE = 22,
-    SYSCALL_WAIT   = 23
+    SYSCALL_WAIT   = 23,
+    
+    SYSCALL_TASK_SWITCH = 24,
+    
+    SYSCALL_FS_READDIR = 25
 };
 
 

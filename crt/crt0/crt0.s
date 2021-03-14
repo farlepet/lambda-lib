@@ -2,7 +2,6 @@
 
 .global start
 start:
-	mov  %esp, %ebp
 	push %ebp
 	mov  %esp, %ebp
 
@@ -17,7 +16,7 @@ start:
 	call main
 
 prog_exit:
-	push $0        # Argument array
+	push %eax      # Argument array (return value)
 	mov %esp, %ebx # Pointer to argument array
 	mov $3, %eax   # SYSCALL_EXIT
 	int $0xFF      # Syscall
