@@ -4,6 +4,8 @@
 #include <stddef.h>
 #include <sys/types.h>
 
+extern char **environ;
+
 #define STDIN_FILENO  0
 #define STDOUT_FILENO 1
 #define STDERR_FILENO 2
@@ -33,6 +35,17 @@ int close(int fd);
  * @return int -1 on error, else no return
  */
 int execve(const char *path, char *const argv[], char *const envp[]);
+
+/**
+ * @brief Replace the current process image with a new one created from the
+ * specified executable, with PATH searching.
+ *
+ * @param path Path to executable file
+ * @param argv List of program arguments, the first of which should represent the file being executed
+ *
+ * @return int -1 on error, else no return
+ */
+int execvp(const char *path, char *const argv[]);
 
 /**
  * @brief Forks the current running process into two identical processes.

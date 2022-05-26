@@ -8,4 +8,13 @@
  */
 void exit(int status);
 
+/**
+ * @brief Get value of environment variable
+ *
+ * @param name Environment variable name
+ *
+ * @return char* Null if not found, else pointer to value in environ.
+ */
+char *getenv(const char *name);
+
 #endif

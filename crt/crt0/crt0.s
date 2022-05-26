@@ -1,5 +1,7 @@
 # CRT0.s
 
+.extern _lib_init
+
 .global start
 start:
 	push %ebp
@@ -13,6 +15,7 @@ start:
 	mov  4(%ebp), %eax  # argc
 	push %eax
 
+	call _lib_init
 	call main
 
 prog_exit:
