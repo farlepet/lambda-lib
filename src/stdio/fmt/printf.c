@@ -11,7 +11,7 @@ int printf(const char *format, ...)
 	int i = 0;
     while(i < 1024) temp[i++] = ' ';
     
-    int ret = print(temp, format, varg);
+    int ret = print(temp, (size_t)-1, format, varg);
     
     write(STDOUT_FILENO, temp, ret);
     

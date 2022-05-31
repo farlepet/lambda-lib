@@ -2,6 +2,7 @@
 #define LAMBDA_LIB_STDIO_FMT_H
 
 #include <stdint.h>
+#include <stddef.h>
 
 #define FMT_SPEC '%' //!< Format specifier character
 
@@ -54,10 +55,11 @@ int get_dec(const char *str, arg_t *out);
  * string as output.
  * 
  * @param out the output string
+ * @param maxlen Maximum number of bytes to write to out
  * @param format the format string
  * @param varg the list of arguments
  * @return the number of charactern placed in `out`
  */
-int print(char *out, const char *format, __builtin_va_list varg);
+int print(char *out, size_t maxlen, const char *format, __builtin_va_list varg);
 
 #endif

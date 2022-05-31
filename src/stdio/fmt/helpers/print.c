@@ -3,7 +3,7 @@
 #include <string.h>
 #include <wchar.h>
 
-int print(char *out, const char *format, __builtin_va_list varg)
+int print(char *out, size_t maxlen, const char *format, __builtin_va_list varg)
 {
 	uint8_t is_in_spec = 0;
 	int8_t  size = 0;      // Size of the integer
@@ -14,12 +14,18 @@ int print(char *out, const char *format, __builtin_va_list varg)
 	uint8_t leftalign = 0; // Align to the left
 	uint8_t padzeros = 0;  // Use zeros instead of spaces for padding
 	
-	int nchars = 0;    // Number of chars printed so far
+	size_t nchars = 0;    // Number of chars printed so far
 	
 	arg_t temp;
 	
 	for(; *format != 0; format++)
 	{
+		if(nchars >= maxlen) {
+			/* @todo Make sure we don't exceed maxlen anywhere */
+			out[maxlen-1] = '\0';
+			return (int)maxlen;
+		}
+
 		if(!is_in_spec)
 		{
 			if(*format == FMT_SPEC)
@@ -182,5 +188,5 @@ int print(char *out, const char *format, __builtin_va_list varg)
 	(void)precision;
 	(void)leftalign;
 	
-	return nchars;
+	return (int)nchars;
 }

@@ -1,6 +1,8 @@
 #ifndef LAMBDA_LIB_STDIO_H
 #define LAMBDA_LIB_STDIO_H
 
+#include <stddef.h>
+
 #define EOF -1 //!< End-of-file return value
 
 /**
@@ -25,6 +27,17 @@ int printf(const char *, ...);
  * @see print
  */
 int sprintf(char *, const char *, ...);
+
+/**
+ * @brief 
+ * 
+ * @param out 
+ * @param size 
+ * @param format 
+ * @param ... 
+ * @return int 
+ */
+int snprintf(char *out, size_t size, const char *format, ...);
 
 /**
  * \brief Write character to stdout
