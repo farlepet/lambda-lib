@@ -37,12 +37,16 @@ int execvp(const char *path, char *const argv[]) {
                 filepath[len] = '/';
                 strcpy(filepath + (len+1), path);
 
-                /* @todo Test if file exists */
+                /* @todo Test if file exists via access() */
 
                 execve(filepath, argv, environ);
             }
 
-            env_path = end+1;
+            if(end) {
+                env_path = end+1;
+            } else {
+                break;
+            }
         }
     }
 
