@@ -6,6 +6,8 @@
 enum syscalls {
     SYSCALL_EXIT      = 3,
 
+    SYSCALL_FS_READDIR = 10,
+    SYSCALL_FS_STAT    = 11,
     SYSCALL_FS_READ    = 12,
     SYSCALL_FS_WRITE   = 13,
     SYSCALL_FS_OPEN    = 14,
@@ -23,10 +25,10 @@ enum syscalls {
 
     SYSCALL_TASK_SWITCH = 24,
 
-    SYSCALL_FS_READDIR = 25
 };
 
+typedef uint32_t syscallarg_t;
 
-void call_syscall(uint32_t scn, uint32_t *args);
+void call_syscall(uint32_t scn, syscallarg_t *args);
 
 #endif
