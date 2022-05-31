@@ -6,7 +6,11 @@ SRCS       = $(wildcard $(SRC)/*.c) $(wildcard $(SRC)/*/*.c) $(wildcard $(SRC)/*
 
 OBJS       = $(patsubst %.c,%.o,$(SRCS))
 
-CFLAGS    += -m32 -nostdlib -nostdinc -ffreestanding -Wall -Wextra -Werror -fno-stack-protector -I $(INC)
+CFLAGS    += -m32 -march=i586 \
+             -nostdlib -nostdinc -ffreestanding \
+			 -Wall -Wextra -Werror \
+			 -fno-stack-protector \
+			 -I $(INC)
 LDFLAGS    = -melf_i386 -T ../../linker_test.ld
 
 OUT        = liblambda.a
