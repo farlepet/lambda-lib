@@ -61,6 +61,14 @@ char *strcpy(char *restrict dest, const char *src);
 char *strncpy(char *restrict dest, const char *src, size_t n);
 
 /**
+ * @brief Duplicate string
+ *
+ * @param s String to duplicate
+ * @return char* Pointer to new string, or NULL on failure
+ */
+char *strdup(const char *s);
+
+/**
  * @brief Fill memory region with byte value
  *
  * @param s Pointer to memory region to fill
