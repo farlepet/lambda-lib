@@ -61,6 +61,17 @@ char *strcpy(char *restrict dest, const char *src);
 char *strncpy(char *restrict dest, const char *src, size_t n);
 
 /**
+ * @brief Fill memory region with byte value
+ *
+ * @param s Pointer to memory region to fill
+ * @param c Byte value to fill region with
+ * @param n Number of bytes to write
+ *
+ * @return void* Pointer to memory region s
+ */
+void *memset(void * s, int c, size_t n);
+
+/**
  * @brief Copy data from one location to another
  *
  * @note Memory regions must be non-overlapping
