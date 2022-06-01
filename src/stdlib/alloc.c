@@ -269,22 +269,59 @@ void *malloc(size_t size) {
     return _alloc(size, MIN_ALIGN);
 }
 
-void free(void *ptr) {
-    //lock(&alloc_lock);
-
-    // Find the corresponding memory block
+static int _find_addr(uintptr_t addr, uint16_t *block, uint16_t *idx) {
     for(unsigned j = 0; j < ALLOC_BLOCKS; j++) {
         if(_allocs[j] == NULL) { continue; }
         for(unsigned i = 0; i < ALLOC_BLOCK; i++) {
             if(_allocs[j][i].flags & ALCENTFLAG_VALID) {
-                if(_allocs[j][i].addr == (uint32_t)ptr) {
-                    _rm_alloc(j, i); // Free it!
-                    //unlock(&alloc_lock);
-                    return;
+                if(_allocs[j][i].addr == addr) {
+                    if(block) { *block = j; }
+                    if(idx)   { *idx   = i; }
+                    return 0;
                 }
             }
         }
     }
 
-    /* @todo Error */
+    return -1;
+}
+
+void free(void *ptr) {
+    //lock(&alloc_lock);
+
+    uint16_t block = 0;
+    uint16_t idx   = 0;
+
+    if(!_find_addr((uintptr_t)ptr, &block, &idx)) {
+        _rm_alloc(block, idx);
+    }
+
+    //unlock(&alloc_lock);
+
+    /* @todo Error if not found */
+}
+
+void *realloc(void *ptr, size_t size) {
+    /* @todo Attempt to enlarge region first */
+    uint16_t block = 0;
+    uint16_t idx   = 0;
+
+    void *new = NULL;
+
+    if(ptr && _find_addr((uintptr_t)ptr, &block, &idx)) {
+        return NULL;
+    }
+    if(size) {
+        new = malloc(size);
+        if(ptr) {
+            size_t sz = _allocs[block][idx].size;
+            if(sz > size) { sz = size; }
+            memcpy(new, ptr, sz);
+        }
+    }
+    if(ptr) {
+        free(ptr);
+    }
+
+    return new;
 }
