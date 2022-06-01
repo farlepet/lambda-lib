@@ -49,10 +49,25 @@ int execvp(const char *path, char *const argv[]);
 
 /**
  * @brief Forks the current running process into two identical processes.
- * 
- * @return pid_t -1 on error (this overlaps with the kernel process), 0 for the
- * for the child process, otherwise the PID of the child process.
+ *
+ * @return pid_t -1 on error, 0 for the for the child process, otherwise the PID
+ * of the child process.
  */
 pid_t fork(void);
+
+#define F_OK (0)      /** File existence */
+#define X_OK (1 << 0) /** Execute access */
+#define W_OK (1 << 1) /** Write access */
+#define R_OK (1 << 2) /** Read access */
+
+/**
+ * @brief Test accessibility or existence of file
+ *
+ * @param path Path of file to check
+ * @param amode Access mode(s) to check
+ *
+ * @return int -1 on error, else 0
+ */
+int access(const char *path, int amode);
 
 #endif
