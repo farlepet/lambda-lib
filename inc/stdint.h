@@ -11,4 +11,7 @@ typedef short     int16_t; ///< Signed 16 bit integer
 typedef int       int32_t; ///< Signed 32 bit integer
 typedef long long int64_t; ///< Signed 64 bit integer
 
+/* @todo Base on target */
+typedef uint32_t uintptr_t;
+
 #endif
