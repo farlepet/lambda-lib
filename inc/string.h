@@ -92,4 +92,15 @@ void *memset(void * s, int c, size_t n);
  */
 void *memcpy(void *restrict dest, const void *restrict src, size_t n);
 
+/**
+ * @brief Copy data from one location to another. Locations may overlap
+ *
+ * @param dest Destination address
+ * @param src Source address
+ * @param n Number of bytes to copy
+ *
+ * @return void* Pointer to dest
+ */
+void *memmove(void * dest, const void * src, size_t n);
+
 #endif
